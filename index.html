@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SDVX Clear List</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script src="js/html2canvas.js"></script>
+    <script src="js/knockout-3.2.0.js"></script>
+    <script src="js/sdvx.js"></script>
+    <link rel="stylesheet" href="css/sdvx.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">SDVX クリア一覧表</a>
+            </div>
+        </div>
+    </nav>
+
+    <h3 class="container">
+
+        <button type="button" class="btn btn-primary" data-bind="click: saveImage">画像として出力</button>
+        <a download="sdvx.jpg" data-bind="attr: {href: downloadUrl}, style{visibility: downloadUrl()==''?'hidden':'visible'}"　target="_blank">保存</a>
+    </h3>
+
+    <div class="container">
+        <div id="clearlist" style="background: #fff; padding: 10px">
+
+            <h1>SDVX　クリア一覧表</h1>
+
+            <h2>15 EXH</h1>
+            <div class="box-wrapper">
+                <!-- ko foreach: tracks15exh -->
+                    <div class="box">
+                        <img class="jacket" data-bind="click: changeClearmark, attr: {src: img, title:title}, style: {background: clearmark}"></img>
+                        <div class="rank">
+                            <p class="text-center" style="margin: 0px" data-bind="click: changeClearrank, text: clearrank"/>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            </div>
+
+            <h2>15 INF / GRV</h1>
+            <div class="box-wrapper">
+                <!-- ko foreach: tracks15inf -->
+                    <div class="box">
+                        <img class="jacket" data-bind="click: changeClearmark ,attr: {src: img, title:title}, style: {background: clearmark}"></img>
+                        <div class="rank">
+                            <p class="text-center" style="margin: 0px" data-bind="click: changeClearrank, text: clearrank"/>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            </div>
+
+            <h2>16</h1>
+            <div class="box-wrapper">
+                <!-- ko foreach: tracks16 -->
+                    <div class="box">
+                        <img class="jacket" data-bind="click: changeClearmark ,attr: {src: img, title:title}, style: {background: clearmark}"></img>
+                        <div class="rank">
+                            <p class="text-center" style="margin: 0px" data-bind="click: changeClearrank, text: clearrank"/>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
